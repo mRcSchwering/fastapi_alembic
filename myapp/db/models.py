@@ -24,3 +24,9 @@ class Item(Base):
     owner_id = Column(Integer, ForeignKey("users.id"))
 
     owner = relationship("User", back_populates="items")
+
+
+class Test(Base):
+    __tablename__ = "test"
+
+    id = Column(Integer, primary_key=True, index=True)

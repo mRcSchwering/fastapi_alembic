@@ -1,8 +1,6 @@
 from logging.config import fileConfig
-
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from alembic import context
 
 # this is the Alembic Config object, which provides
@@ -18,7 +16,7 @@ fileConfig(config.config_file_name)
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
 from myapp.db.database import Base  # noqa
-from myapp.db import models  # noqa  # TODO: important to import models so that MetaData is filled
+from myapp.db import models  # noqa
 target_metadata = Base.metadata
 
 

@@ -1,14 +1,10 @@
 from typing import List
-
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
-
 from myapp.db import crud, schemas
 from myapp.db.database import SessionLocal
 
 app = FastAPI()
-
-# Dependency
 
 
 def get_db():

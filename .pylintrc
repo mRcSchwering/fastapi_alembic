@@ -1,3 +1,5 @@
 [MASTER]
-
-ignored-classes=SQLObject,Registrant,scoped_session
+ignored-classes=SQLObject,Registrant,scoped_session,Session
+ignored-modules=alembic
+extension-pkg-whitelist=pydantic
+generated-members=alembic.*

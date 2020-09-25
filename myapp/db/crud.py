@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-
 from myapp.db import models, schemas
 
 
