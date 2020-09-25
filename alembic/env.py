@@ -1,3 +1,5 @@
+from pathlib import Path
+import sys
 from logging.config import fileConfig
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
@@ -11,12 +13,17 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-from myapp.db.database import Base  # noqa
-from myapp.db import models  # noqa
+# little hack to make using alembic easier
+# otherwise I would have to always use `PYTHONPATH=. alembic ...`
+# there is no better way of doing this apperently
+# see: https://stackoverflow.com/questions/57468141/alembic-modulenotfounderror-in-env-py
+sys.path.append(str(Path(__file__).parent.parent.absolute()))
+
+# importing the declarative Base
+# then importing models, so that all the metadata
+# is being defined on that Base
+from myapp.db.database import Base  # noqa pylint: disable=import-error,wrong-import-position
+from myapp.db import models  # noqa pylint: disable=import-error,wrong-import-position,unused-import
 target_metadata = Base.metadata
 
 
