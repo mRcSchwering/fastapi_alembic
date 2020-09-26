@@ -30,3 +30,4 @@ class Test(Base):
     __tablename__ = "test"
 
     id = Column(Integer, primary_key=True, index=True)
+    numbers = Column(Integer)
