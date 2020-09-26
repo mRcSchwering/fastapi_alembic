@@ -1,3 +1,20 @@
+"""
+Alembic-based tests.
+
+Testing whether current database and code are in sync.
+Below I am using alembics autogenerate to create a temporary migration file.
+Then I basically assert that the migration is empty.
+If it's not empty, database and code are not in sync.
+
+This looks kind of hacky but it seems this is the most stable way to do this.
+I saw some people doing the same thing using the alembic classes directly
+from python. But there implementations didn't work for me, so I assume
+the APIs of these classes were changed with some alembic upgrade.
+Here, I am doing the most primitive thing and just use the alembic
+command as I would do if I normally use alembic. I figured the CLI is
+probably the most stable API. I am actually writing the migration file,
+read it, and delete it again.
+"""
 import os
 from pathlib import Path
 from subprocess import run
