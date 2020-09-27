@@ -1,4 +1,4 @@
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session  # type: ignore
 from myapp.db import models, schemas
 
 

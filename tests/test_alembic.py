@@ -46,6 +46,11 @@ def test_database_in_sync_with_code():
     finally:
         remove_revision()
     idx = lines.index('def upgrade():')
-    assert lines[idx + 1] == 'pass', 'no upgrades'
+    assert lines[idx + 1] == 'pass', 'database and code not in sync'
     idx = lines.index('def downgrade():')
-    assert lines[idx + 1] == 'pass', 'no downgrade'
+    assert lines[idx + 1] == 'pass', 'database and code not in sync'
+
+
+if __name__ == "__main__":
+    print('Testing whether database and code is in sync')
+    test_database_in_sync_with_code()
